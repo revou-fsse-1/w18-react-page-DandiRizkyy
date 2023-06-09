@@ -4,7 +4,7 @@ type LikedPhotoProps = {
 
 export const LikedPhotos = (props: LikedPhotoProps) => {
   return (
-    <div>
+    <div className="flex justify-end items-end  ">
       <p>You have liked {props.count} photos</p>
     </div>
   );

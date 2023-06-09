@@ -19,20 +19,29 @@ export const MemberForm = () => {
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!email || email === undefined) {
+    const trimmedEmail = email.trim();
+    const trimmedFirstName = firstName.trim();
+    const trimmedLastName = lastName.trim();
+
+    if (!trimmedEmail || trimmedEmail === undefined) {
       const field: string | undefined = "email must not empty";
       setEmailError(field);
-    } else if (!isValidEmail(email)) {
+    } else if (!isValidEmail(trimmedEmail)) {
       setEmailError("Invalid email format");
     }
 
-    if (!firstName || firstName === undefined) {
-      const field: string | undefined = "firstname must filled in";
+    if (!trimmedFirstName || trimmedFirstName === undefined) {
+      const field: string | undefined = "firstname must not empty";
       setFirstNameError(field);
+    } else if (!isValidName(trimmedFirstName)) {
+      setFirstNameError("firstname must not empty");
     }
-    if (!lastName || lastName === undefined) {
-      const field: string | undefined = "lastname must filled in";
+
+    if (!trimmedLastName || trimmedLastName === undefined) {
+      const field: string | undefined = "lastname must not empty";
       setLastNameError(field);
+    } else if (!isValidName(trimmedLastName)) {
+      setLastNameError("lastname must not empty");
     }
     console.log({ email, firstName, lastName });
   };
@@ -43,44 +52,71 @@ export const MemberForm = () => {
     return emailRegex.test(value);
   };
 
+  const isValidName = (value: string): boolean => {
+    // Name validation logic using regex
+    const nameRegex = /^[^\s]+$/;
+    return nameRegex.test(value);
+  };
+
   return (
     <div>
       {/* <p>state: {email}</p>
       <p>state: {firstName}</p>
       <p>state: {lastName}</p> */}
-      <form onSubmit={handleForm}>
-        <label htmlFor="member-email">User Email</label>
+      <form className="flex flex-col justify-center" onSubmit={handleForm}>
+        <label className="font-bold" htmlFor="member-email">
+          User Email
+        </label>
         <input
           onChange={handleInputChange}
+          className="border border-black rounded-lg px-2 py2 text-xl "
           name="email"
           value={email}
           id="member-email"
           type="text"
         />
         {!email || !isValidEmail(email) ? (
-          <span>{emailError}</span>
+          <span className="my-1 text-red-600">{emailError}</span>
         ) : (
           <span></span>
         )}
-        <label htmlFor="first-name">First Name</label>
+        <label className="font-bold" htmlFor="first-name">
+          First Name
+        </label>
         <input
           onChange={handleInputChange}
+          className="border border-black rounded-lg px-2 py2 text-xl"
           name="firstname"
           value={firstName}
           id="first-name"
           type="text"
         />
-        {!firstName ? <span>{firstNameError}</span> : <span></span>}
-        <label htmlFor="last-name">Last Name</label>
+        {!firstName || !isValidName(firstName) ? (
+          <span className="my-1 text-red-600">{firstNameError}</span>
+        ) : (
+          <span></span>
+        )}
+        <label className="font-bold" htmlFor="last-name">
+          Last Name
+        </label>
         <input
           onChange={handleInputChange}
+          className="border border-black rounded-lg px-2 py2 text-xl"
           name="lastname"
           value={lastName}
           id="last-name"
           type="text"
         />
-        {!lastName ? <span>{lastNameError}</span> : <span></span>}
-        <input type="submit" value="Add Member Information" />
+        {!lastName || !isValidName(lastName) ? (
+          <span className="my-1 text-red-600">{lastNameError}</span>
+        ) : (
+          <span></span>
+        )}
+        <input
+          className="border my-3 px-1 py-1 font-bold text-white border-black rounded-lg cursor-pointer bg-green-700 hover:bg-green-400"
+          type="submit"
+          value="Become Member !!!"
+        />
       </form>
     </div>
   );

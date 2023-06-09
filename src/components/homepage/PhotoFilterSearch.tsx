@@ -10,10 +10,13 @@ export const PhotoFilterSearch = (props: PhotoFilterSearchProps) => {
     setFilterValue(value);
   };
   return (
-    <input
-      type="text"
-      placeholder="search for photos.."
-      onChange={handleInputChange}
-    />
+    <div className="flex justify-center items-center py-2">
+      <input
+        className="py-1 px-12 border border-black rounded-xl text-center"
+        type="text"
+        placeholder="search for photos.."
+        onChange={handleInputChange}
+      />
+    </div>
   );
 };
