@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-export const MemberForm = () => {
+export const MemberForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailError, setEmailError] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
+  const [isSuccess, setIsSuccess] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const field = event.target.name;
@@ -44,6 +45,13 @@ export const MemberForm = () => {
       setLastNameError("lastname must not empty");
     }
     console.log({ email, firstName, lastName });
+    if (trimmedEmail && trimmedFirstName && trimmedLastName) {
+      onSuccess(); // Call the onSuccess callback provided by the parent component
+    }
+
+    if (trimmedEmail || trimmedFirstName || trimmedLastName) {
+      setIsSuccess("Success! You have become a member.");
+    }
   };
 
   const isValidEmail = (value: string): boolean => {
@@ -117,6 +125,11 @@ export const MemberForm = () => {
           type="submit"
           value="Become Member !!!"
         />
+        {!isSuccess ? (
+          <span></span>
+        ) : (
+          <span className="my-1 text-green-600">{isSuccess}</span>
+        )}
       </form>
     </div>
   );

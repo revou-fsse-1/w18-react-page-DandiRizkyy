@@ -4,12 +4,14 @@ import { PhotoFilterSearch } from "./components/homepage/PhotoFilterSearch";
 import { HeaderComponent } from "./components/navbar/HeaderComponent";
 import { catPhotos } from "./data/cat-photo";
 import { PhotoCard } from "./components/homepage/PhotoCard";
-import { ModalPage } from "./components/homepage/ModalPage";
+import { ModalPage, Snackbar } from "./components/homepage/ModalPage";
 
 function App() {
   const [photos, setPhotos] = useState(catPhotos);
   const [filterValue, setFilterValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
 
   function handleLikePhotos(id: number, isLiked: boolean) {
     const newPhotos = photos.map((photo) => {
@@ -38,6 +40,16 @@ function App() {
     setIsModalOpen(false);
   };
 
+  const showSnackbar = (message: string) => {
+    setSnackbarMessage(message);
+    setIsSnackbarVisible(true);
+
+    setTimeout(() => {
+      setIsSnackbarVisible(false);
+      setSnackbarMessage("");
+    }, 5000); // Snackbar visibility duration (in milliseconds)
+  };
+
   return (
     <main className="flex flex-col items-center justify-center">
       <HeaderComponent />
@@ -62,7 +74,10 @@ function App() {
       >
         Join Our Cat Army Now ! 😼
       </button>
-      {isModalOpen && <ModalPage closeModal={closeModal} />}
+      {isModalOpen && (
+        <ModalPage closeModal={closeModal} showSnackbar={showSnackbar} />
+      )}
+      {isSnackbarVisible && <Snackbar message={snackbarMessage} />}
       <br></br>
     </main>
   );
