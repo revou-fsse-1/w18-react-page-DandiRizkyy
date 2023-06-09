@@ -18,19 +18,29 @@ export const MemberForm = () => {
   };
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (!email || email === undefined) {
-      const field: string | undefined = "email must filled in";
+      const field: string | undefined = "email must not empty";
       setEmailError(field);
+    } else if (!isValidEmail(email)) {
+      setEmailError("Invalid email format");
     }
+
     if (!firstName || firstName === undefined) {
       const field: string | undefined = "firstname must filled in";
       setFirstNameError(field);
     }
-    if (!lastName) {
+    if (!lastName || lastName === undefined) {
       const field: string | undefined = "lastname must filled in";
       setLastNameError(field);
     }
     console.log({ email, firstName, lastName });
+  };
+
+  const isValidEmail = (value: string): boolean => {
+    // Email validation logic using regex
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(value);
   };
 
   return (
@@ -47,7 +57,11 @@ export const MemberForm = () => {
           id="member-email"
           type="text"
         />
-        {!email ? <span>{emailError}</span> : <span></span>}
+        {!email || !isValidEmail(email) ? (
+          <span>{emailError}</span>
+        ) : (
+          <span></span>
+        )}
         <label htmlFor="first-name">First Name</label>
         <input
           onChange={handleInputChange}
