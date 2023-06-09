@@ -30,4 +30,4 @@ For this week assignment im creating Frontend website using react.
 
 ---
 
-Week 18 Assignment Links : ...
+Week 18 Assignment Links : https://w18-react.netlify.app/
