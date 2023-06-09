@@ -16,7 +16,7 @@ export const ModalPage: React.FC<ModalProps> = ({
   showSnackbar,
 }) => {
   const handleSuccess = () => {
-    alert("clicked!!");
+    // alert("clicked!!");
     showSnackbar("Success! You have become a member.");
     closeModal(); // Close the modal when registration is successful
   };

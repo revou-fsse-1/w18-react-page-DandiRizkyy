@@ -51,11 +51,11 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat bg-backgroundImage">
       <HeaderComponent />
       <PhotoFilterSearch setFilterValue={handleFilterChange} />
       <LikedPhotos count={likedPhotoCount} />
-      <section className="mt-4 mb-10 max-w-[900px] grid sm:grid-cols-2 md:grid-cols-4 gap-9">
+      <section className="mt-4 mb-10 sm:max-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9">
         {filteredPhotos.map((photos) => (
           <PhotoCard
             key={photos.id}
