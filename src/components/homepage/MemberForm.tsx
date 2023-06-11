@@ -7,7 +7,7 @@ export const MemberForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const [emailError, setEmailError] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
-  const [isSuccess, setIsSuccess] = useState("");
+  // const [isSuccess, setIsSuccess] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const field = event.target.name;
@@ -49,9 +49,9 @@ export const MemberForm = ({ onSuccess }: { onSuccess: () => void }) => {
       onSuccess(); // Call the onSuccess callback provided by the parent component
     }
 
-    if (trimmedEmail || trimmedFirstName || trimmedLastName) {
-      setIsSuccess("Success! You have become a member.");
-    }
+    // if (trimmedEmail || trimmedFirstName || trimmedLastName) {
+    //   setIsSuccess("Success! You have become a member.");
+    // }
   };
 
   const isValidEmail = (value: string): boolean => {
