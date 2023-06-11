@@ -125,11 +125,11 @@ export const MemberForm = ({ onSuccess }: { onSuccess: () => void }) => {
           type="submit"
           value="Become Member !!!"
         />
-        {!isSuccess ? (
+        {/* {!isSuccess ? (
           <span></span>
         ) : (
           <span className="my-1 text-green-600">{isSuccess}</span>
-        )}
+        )} */}
       </form>
     </div>
   );
