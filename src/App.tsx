@@ -56,16 +56,25 @@ function App() {
       <PhotoFilterSearch setFilterValue={handleFilterChange} />
       <LikedPhotos count={likedPhotoCount} />
       <section className="mt-4 mb-10 sm:max-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9">
-        {filteredPhotos.map((photos) => (
-          <PhotoCard
-            key={photos.id}
-            id={photos.id}
-            imgUrl={photos.imgUrl}
-            title={photos.title}
-            isLiked={photos.isLiked}
-            likePhoto={handleLikePhotos}
-          />
-        ))}
+        {filteredPhotos.length ? (
+          filteredPhotos.map((photos) => (
+            <PhotoCard
+              key={photos.id}
+              id={photos.id}
+              imgUrl={photos.imgUrl}
+              title={photos.title}
+              isLiked={photos.isLiked}
+              likePhoto={handleLikePhotos}
+            />
+          ))
+        ) : (
+          <div className="mt-40 col-span-full text-center">
+            <p className="block font-medium text-4xl">
+              No Photos found. Try again, meow. 😿
+            </p>
+            <p className="mt-40"></p>
+          </div>
+        )}
       </section>
       {/* <MemberForm /> */}
       <button
