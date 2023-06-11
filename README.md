@@ -10,6 +10,18 @@
 
 For this week assignment im creating Frontend website using react.
 
+## Installation 🔨
+
+---
+
+In order to install and develop locally, follow these steps:
+
+1. Clone this repository
+
+```bash
+https://github.com/revou-fsse-1/w18-react-page-DandiRizkyy.git
+```
+
 ## Pages 📖
 
 ---
