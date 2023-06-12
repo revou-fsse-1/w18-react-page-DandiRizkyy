@@ -51,11 +51,11 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat bg-backgroundImage">
+    <main className="flex flex-col px-6 py-5 items-center justify-center bg-cover bg-center bg-no-repeat bg-backgroundImage">
       <HeaderComponent />
       <PhotoFilterSearch setFilterValue={handleFilterChange} />
       <LikedPhotos count={likedPhotoCount} />
-      <section className="mt-4 mb-10 sm:max-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9">
+      <section className="max-w-5xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9 auto-fit mt-10 mb-10">
         {filteredPhotos.length ? (
           filteredPhotos.map((photos) => (
             <PhotoCard
@@ -77,12 +77,15 @@ function App() {
         )}
       </section>
       {/* <MemberForm /> */}
-      <button
-        className="hover:bg-blue-500 bg-blue-700 text-white px-4 py-2 rounded-md"
-        onClick={openModal}
-      >
-        Join Our Cat Army Now ! 😼
-      </button>
+      <div className="mx-auto flex justify-center items-center mt-8">
+        <button
+          className="hover:bg-blue-500  bg-blue-700 text-white px-4 py-2 rounded-md"
+          onClick={openModal}
+        >
+          Join Our Cat Army Now ! 😼
+        </button>
+      </div>
+
       {isModalOpen && (
         <ModalPage closeModal={closeModal} showSnackbar={showSnackbar} />
       )}

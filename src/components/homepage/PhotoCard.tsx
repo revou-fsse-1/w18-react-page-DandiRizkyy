@@ -8,16 +8,16 @@ type PhotoCardProps = {
 export const PhotoCard = (props: PhotoCardProps) => {
   return (
     // <div className="mt-4 max-w-[900px] flex flex-wrap flex-col justify-center items-center gap-4">
-    <div className="rounded-lg hover:scale-110 duration-500 relative shadow-2xl shadow-black">
+    <div className="relative rounded-md overflow-hidden hover:scale-110 duration-500 shadow-2xl shadow-black">
       <img
         src={props.imgUrl}
         alt=""
-        className="w-fit sm:w-[210px] md:w-[200px] h-[270px] rounded-lg object-cover"
+        className="block w-full aspect-[11/16] object-cover"
       />
       <h3 className=" text-slate-950 bg-white rounded-md  font-semibold text-lg text-center">
         {props.title}
       </h3>
-      <div className="cursor-pointer border-[1px] border-grey absolute  text-xs top-[3px] right-[3px] rounded-lg bg-blue-500 hover:bg-blue-300">
+      <div className="cursor-pointer absolute top-[4px] right-[5px] border border-white md:text-sm rounded-xl bg-blue-500 hover:bg-blue-300">
         {!props.isLiked ? (
           <button
             className="px-8 text-white font-bold"
