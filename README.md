@@ -2,7 +2,7 @@
 
 # Week 18 Assignment (React Props, State & Hooks)
 
-![Assignment](/src/assets/Screenshot%20from%202023-06-09%2023-29-30.png)
+![Assignment](/src/assets/cat-banner.png)
 
 ## Description ✍🏻
 
